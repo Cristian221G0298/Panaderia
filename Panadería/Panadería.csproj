@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Bolillo.png" />
+    <None Remove="concha.png" />
+    <None Remove="croissant.png" />
+    <None Remove="donas.png" />
+    <None Remove="empanada.png" />
+    <None Remove="Quequito.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bolillo.png" />
+    <Resource Include="concha.png" />
+    <Resource Include="croissant.png" />
+    <Resource Include="donas.png" />
+    <Resource Include="empanada.png" />
+    <Resource Include="Quequito.png" />
+  </ItemGroup>
+
+</Project>

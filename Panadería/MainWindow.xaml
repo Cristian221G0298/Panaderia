@@ -1,0 +1,54 @@
+﻿<Window x:Class="Panadería.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Panadería"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:Venta x:Name="V"/>
+    </Window.DataContext>
+    <DockPanel>
+        <StackPanel Width="350" Margin="10">
+
+            <StackPanel.DataContext>
+                <local:Pan/>
+            </StackPanel.DataContext>
+
+            <Label FontSize="24" FontStyle="Italic">Elige tu pan:</Label>
+            <UniformGrid Height="150" Columns="3" Rows="2">
+                <Button Command="{Binding ElementName=V, Path=AgregarCommand}" CommandParameter="{Binding Source={x:Reference Name=V}, Path=Panes[0]}" Margin="5" BorderBrush="Black" BorderThickness="2,2,2,2">
+                    <Image Source="/concha.png"></Image>
+                </Button>
+                <Button Command="{Binding ElementName=V, Path=AgregarCommand}" CommandParameter="{Binding Source={x:Reference Name=V}, Path=Panes[5]}" Margin="3" BorderBrush="Black" BorderThickness="2,2,2,2">
+                    <Image Source="/Bolillo.png"></Image>
+                </Button>
+                <Button Command="{Binding ElementName=V, Path=AgregarCommand}" CommandParameter="{Binding Source={x:Reference Name=V}, Path=Panes[4]}" Margin="3" BorderBrush="Black" BorderThickness="2,2,2,2">
+                    <Image Source="/donas.png"></Image>
+                </Button>
+                <Button Command="{Binding ElementName=V, Path=AgregarCommand}" CommandParameter="{Binding Source={x:Reference Name=V}, Path=Panes[3]}" Margin="3" BorderBrush="Black" BorderThickness="2,2,2,2">
+                    <Image Source="/empanada.png"></Image>
+                </Button>
+                <Button Command="{Binding ElementName=V, Path=AgregarCommand}" CommandParameter="{Binding Source={x:Reference Name=V}, Path=Panes[1]}" Margin="3" BorderBrush="Black" BorderThickness="2,2,2,2">
+                    <Image Source="/Quequito.png"></Image>
+                </Button>
+                <Button Command="{Binding ElementName=V, Path=AgregarCommand}" CommandParameter="{Binding Source={x:Reference Name=V}, Path=Panes[2]}" Margin="3" BorderBrush="Black" BorderThickness="2,2,2,2">
+                    <Image Source="/croissant.png"></Image>
+                </Button>
+            </UniformGrid>
+            <Label FontSize="24" FontStyle="Italic">Total a pagar:</Label>
+            <TextBox FontSize="24" Text="{Binding ElementName=V, Path=Total}" Height="35"></TextBox>
+            <UniformGrid Margin="10" Columns="2">
+                <Button Command="{Binding ElementName=V, Path=ComprarCommand}" Width="100" Height="30">Comprar</Button>
+                <Button Command="{Binding ElementName=V, Path=EliminarCommand}" Width="100" Height="30">Cancelar</Button>
+            </UniformGrid>
+        </StackPanel>
+        <DataGrid Margin="10" ItemsSource="{Binding ListaPanes}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Nombre}" Header="Pan" Width=".65*"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Precio}" Header="Precio unitario" Width=".35*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>
